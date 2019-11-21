@@ -36,7 +36,8 @@ public class Test
             {
                 itemQueue.stream().forEach( item -> {
                     System.out.println( "preparing item===>" + item.getItemName() );
-                    try {
+                    try
+                    {
                         Thread.sleep( 10000 );
                     }
                     catch (InterruptedException e) {
@@ -108,12 +109,11 @@ public class Test
         System.out.println( "entire list--->" + listOfQueue );
         ExecutorService executorService = Executors.newFixedThreadPool( listOfQueue.size() );
 
-
-
         listOfQueue.stream().forEach( queue ->
         {
             ChefQueue chefQueue = new ChefQueue( queue );
             executorService.execute( chefQueue );
+            System.out.println("Queue added to processing list --->"+ chefQueue);
         } );
 
         executorService.shutdown();
